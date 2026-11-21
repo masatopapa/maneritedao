@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>マネリテDAOのゲーム・クイズ</title>
-<meta name="description" content="人生選択ゲーム・たこ焼き屋さんゲーム・おかねクイズ大会。マネリテDAOのお金の授業でつかうゲームとクイズのまとめページです。">
+<meta name="description" content="人生選択ゲーム・たこ焼き屋さんゲーム・おかねクイズ大会。マネリテDAOのお金に関するゲームとクイズのまとめページです。">
 <meta name="theme-color" content="#F7A400">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="マネリテDAO">
 <meta property="og:title" content="マネリテDAOのゲーム・クイズ">
-<meta property="og:description" content="人生選択ゲーム・たこ焼き屋さんゲーム・おかねクイズ大会。お金の授業でつかうゲームとクイズのまとめページです。">
+<meta property="og:description" content="人生選択ゲーム・たこ焼き屋さんゲーム・おかねクイズ大会。お金に関するゲームとクイズのまとめページです。">
 <meta property="og:url" content="https://masatopapa.github.io/maneritedao/">
 <meta property="og:image" content="https://masatopapa.github.io/maneritedao/og.png">
 <meta property="og:image:width" content="1200">
@@ -98,7 +98,14 @@
     box-shadow: 0 3px 0 #b85d00;
   }
   .dao__btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #b85d00; }
-  .dao__pdf { display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 700; color: #b85d00; }
+  /* チラシ2面（各ゲームの終了画面と同じ dao-1.jpg／dao-2.jpg）。タップで画像を別タブ＝拡大して見られる */
+  .dao { background: #fff9e8; border-radius: 20px; padding: 18px 14px 22px; box-shadow: 0 2px 0 rgba(120, 80, 20, .08), 0 6px 18px rgba(120, 80, 20, .10); }
+  .dao__h { margin: 0 0 12px; font-size: 19px; font-weight: 900; color: #e85d2f; }
+  .dao__pages { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .dao__pages a { display: block; line-height: 0; border-radius: 10px; overflow: hidden; border: 2px solid #f0c27a; background: #fff; cursor: zoom-in; }
+  .dao__pages img { display: block; width: 100%; height: auto; }
+  .dao__tip { margin: 10px 0 16px; font-size: 13px; color: var(--sub); font-weight: 700; }
+  @media (min-width: 900px) { .dao { padding: 22px 22px 26px; } .dao__pages { grid-template-columns: 1fr 1fr; gap: 20px; } }
 
   /* PCなど横に広い画面は3列（アイコンを上に） */
   @media (min-width: 760px) {
@@ -126,7 +133,7 @@
       <h1 class="mast__title">ゲーム・クイズ</h1>
     </div>
   </header>
-  <p class="lead">お金の授業でつかうゲームとクイズです。<br>タップするとはじまります。</p>
+  <p class="lead">お金に関するゲームとクイズです。<br>タップするとはじまります。</p>
 
   <main class="apps">
     <a class="app" href="https://masatopapa.github.io/jinsei-game/" style="--c:#F7A400; --t:#3d2a00">
@@ -169,8 +176,13 @@
   <p class="hint">📲 ひらいたページで「ホーム画面に追加」すると、アプリのように使えます。</p>
 
   <section class="dao">
-    <a class="dao__btn" href="https://lit.link/monelitedao">マネリテDAOの入り口はこちら</a><br>
-    <a class="dao__pdf" href="https://masatopapa.github.io/jinsei-game/monelite-dao.pdf">📄 マネリテDAOの紹介（PDF）</a>
+    <h2 class="dao__h">マネリテDAOの紹介</h2>
+    <div class="dao__pages">
+      <a href="https://masatopapa.github.io/jinsei-game/dao-1.jpg" target="_blank" rel="noopener"><img src="https://masatopapa.github.io/jinsei-game/dao-1.jpg" width="1191" height="1685" loading="lazy" decoding="async" alt="マネリテDAOの紹介 1ページ目。小中高生のためのお金の授業、マネリテDAOの紹介、授業のポイント、参加者の声、授業実績"></a>
+      <a href="https://masatopapa.github.io/jinsei-game/dao-2.jpg" target="_blank" rel="noopener"><img src="https://masatopapa.github.io/jinsei-game/dao-2.jpg" width="1191" height="1685" loading="lazy" decoding="async" alt="マネリテDAOの紹介 2ページ目。こんなことが学べます、授業タイトルの一例、実際のスライド、教材・コンテンツの開発、お家でやってみようワーク"></a>
+    </div>
+    <p class="dao__tip">画像をタップすると、大きくして見られます</p>
+    <a class="dao__btn" href="https://lit.link/monelitedao">マネリテDAOの入り口はこちら</a>
   </section>
 </div>
 </body>
