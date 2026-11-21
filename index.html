@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>マネリテDAOのゲーム・クイズ</title>
+<meta name="description" content="人生選択ゲーム・たこ焼き屋さんゲーム・おかねクイズ大会。マネリテDAOのお金の授業でつかうゲームとクイズのまとめページです。">
+<meta name="theme-color" content="#F7A400">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="マネリテDAO">
+<meta property="og:title" content="マネリテDAOのゲーム・クイズ">
+<meta property="og:description" content="人生選択ゲーム・たこ焼き屋さんゲーム・おかねクイズ大会。お金の授業でつかうゲームとクイズのまとめページです。">
+<meta property="og:url" content="https://masatopapa.github.io/maneritedao/">
+<meta property="og:image" content="https://masatopapa.github.io/maneritedao/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="マネリテDAO">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #4a3414;
+    --sub: #7a6240;
+    --bg1: #fff3d6;
+    --bg2: #fffaf0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Meiryo", sans-serif;
+    color: var(--ink);
+    background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 60%) fixed;
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 40px; }
+
+  /* 見出し */
+  .mast { display: flex; align-items: center; justify-content: center; gap: 16px; }
+  .mast__logo { width: 76px; height: 76px; flex: none; }
+  .mast__eyebrow { margin: 0; font-weight: 900; font-size: 17px; color: #e87800; letter-spacing: .04em; }
+  .mast__title { margin: 0; font-weight: 900; font-size: 32px; line-height: 1.25; letter-spacing: .02em; }
+  .lead { text-align: center; margin: 14px 0 22px; font-size: 15px; color: var(--sub); font-weight: 700; }
+
+  /* アプリのカード */
+  .apps { display: grid; gap: 14px; }
+  .app {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 14px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 0 rgba(120, 80, 20, .08), 0 6px 18px rgba(120, 80, 20, .10);
+    color: inherit;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .app:hover, .app:focus-visible { transform: translateY(-2px); border-color: var(--c); box-shadow: 0 2px 0 rgba(120, 80, 20, .08), 0 10px 24px rgba(120, 80, 20, .16); outline: none; }
+  .app:active { transform: translateY(1px); }
+  .app__icon {
+    width: 84px; height: 84px;
+    border-radius: 22%;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .18);
+    display: block;
+  }
+  .app__name { margin: 0; font-size: 19px; font-weight: 900; line-height: 1.3; }
+  .app__desc { margin: 4px 0 8px; font-size: 13.5px; color: var(--sub); font-weight: 500; line-height: 1.55; }
+  .app__foot { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .app__tag { white-space: nowrap; font-size: 12px; font-weight: 700; color: var(--sub); background: #f6efe2; border-radius: 999px; padding: 2px 10px; }
+  .app__go {
+    display: inline-block;
+    font-size: 14px; font-weight: 900;
+    background: var(--c); color: var(--t);
+    border-radius: 999px; padding: 5px 16px;
+    white-space: nowrap;
+  }
+
+  .nw { white-space: nowrap; }
+  .hint { text-align: center; margin: 22px 0 0; font-size: 13px; color: var(--sub); font-weight: 700; }
+
+  /* マネリテDAOの案内 */
+  .dao { margin-top: 30px; text-align: center; }
+  .dao__btn {
+    display: inline-block;
+    background: #e87800; color: #fff;
+    font-weight: 900; font-size: 16px;
+    padding: 12px 26px; border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 3px 0 #b85d00;
+  }
+  .dao__btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #b85d00; }
+  .dao__pdf { display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 700; color: #b85d00; }
+
+  /* PCなど横に広い画面は3列（アイコンを上に） */
+  @media (min-width: 760px) {
+    .wrap { padding-top: 44px; }
+    .mast__logo { width: 92px; height: 92px; }
+    .mast__title { font-size: 40px; }
+    .lead { font-size: 16px; margin-bottom: 30px; }
+    .apps { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .app { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 26px 18px 20px; gap: 12px; }
+    .app__icon { width: 128px; height: 128px; }
+    .app__name { font-size: 21px; }
+    .app__desc { font-size: 14px; margin-bottom: 12px; }
+    .app__foot { align-items: center; margin-top: auto; }
+    .app { align-items: start; grid-template-rows: auto 1fr; }
+    .app__body { display: flex; flex-direction: column; align-items: center; height: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <img class="mast__logo" src="dao-logo.png" alt="マネリテDAO" width="92" height="92">
+    <div>
+      <p class="mast__eyebrow">マネリテDAO</p>
+      <h1 class="mast__title">ゲーム・クイズ</h1>
+    </div>
+  </header>
+  <p class="lead">お金の授業でつかうゲームとクイズです。<br>タップするとはじまります。</p>
+
+  <main class="apps">
+    <a class="app" href="https://masatopapa.github.io/jinsei-game/" style="--c:#F7A400; --t:#3d2a00">
+      <img class="app__icon" src="icons/jinsei.png" alt="" width="128" height="128">
+      <div class="app__body">
+        <h2 class="app__name">人生選択ゲーム</h2>
+        <p class="app__desc">会社員か自営業か、投資するかしないか。サイコロで決まる人生を、チームで体験しよう。</p>
+        <div class="app__foot">
+          <span class="app__tag">1〜3チーム・1人でもOK</span>
+          <span class="app__go">あそぶ ▶</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="app" href="https://masatopapa.github.io/takoyaki-game/" style="--c:#e64a19; --t:#fff">
+      <img class="app__icon" src="icons/takoyaki.png" alt="" width="128" height="128">
+      <div class="app__body">
+        <h2 class="app__name">たこ焼き屋さんゲーム</h2>
+        <p class="app__desc">材料を仕入れて、たこ焼きを売ってもうけよう。画面だけで遊べる版と、カードを使う版があります。</p>
+        <div class="app__foot">
+          <span class="app__tag">ルールブックつき</span>
+          <span class="app__go">あそぶ ▶</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="app" href="https://masatopapa.github.io/okane-quiz/" style="--c:#2f7ed8; --t:#fff">
+      <img class="app__icon" src="icons/okane-quiz.png" alt="" width="128" height="128">
+      <div class="app__body">
+        <h2 class="app__name">おかねクイズ大会</h2>
+        <p class="app__desc">お金の授業から出る4択クイズ。<span class="nw">1回10問</span>で、1問ごとに解説が出ます。</p>
+        <div class="app__foot">
+          <span class="app__tag">ふりがな付き・小学生から</span>
+          <span class="app__go">あそぶ ▶</span>
+        </div>
+      </div>
+    </a>
+  </main>
+
+  <p class="hint">📲 ひらいたページで「ホーム画面に追加」すると、アプリのように使えます。</p>
+
+  <section class="dao">
+    <a class="dao__btn" href="https://lit.link/monelitedao">マネリテDAOの入り口はこちら</a><br>
+    <a class="dao__pdf" href="https://masatopapa.github.io/jinsei-game/monelite-dao.pdf">📄 マネリテDAOの紹介（PDF）</a>
+  </section>
+</div>
+</body>
+</html>
